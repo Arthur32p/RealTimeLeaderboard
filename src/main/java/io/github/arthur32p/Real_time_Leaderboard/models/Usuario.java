@@ -19,6 +19,7 @@ public class Usuario implements UserDetails {
 
     @Id
     private String id;
+    private String nickname;
     private String username;
     private String password;
 

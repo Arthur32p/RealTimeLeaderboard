@@ -28,6 +28,7 @@ public class UsuarioService implements UserDetailsService {
 
         Usuario salvo = new Usuario();
         String encodePassword = new BCryptPasswordEncoder().encode(dto.password());
+        salvo.setNickname(dto.nickname());
         salvo.setUsername(dto.username());
         salvo.setPassword(encodePassword);
 
