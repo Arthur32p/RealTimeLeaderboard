@@ -1,0 +1,31 @@
+version: '3.8'
+
+services:
+  mongodb-leaderboard:
+    image: mongo:latest
+    container_name: mongodb-leaderboard
+    ports:
+      - "27020:27017"
+    volumes:
+      - mongo_leaderboard_data:/data/db
+
+  redis-leaderboard:
+    image: redis:alpine
+    container_name: redis-leaderboard
+    ports:
+      - "6379:6379"
+    volumes:
+      - redis_leaderboard_data:/data
+    command: redis-server --appendonly yes
+
+  redisinsight-leaderboard:
+    image: redis/redisinsight:latest
+    container_name: redisinsight-leaderboard
+    ports:
+      - "5540:5540"
+    depends_on:
+      - redis-leaderboard
+
+volumes:
+  mongo_leaderboard_data:
+  redis_leaderboard_data:
