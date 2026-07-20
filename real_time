@@ -1,6 +1,6 @@
 -- POST /api/auth/register
 -- POST /api/auth/login
-POST /api/scores
+-- POST /api/scores
 GET /api/leaderboards/{gameId}
 GET /api/leaderboards/{gameId}/users/me
 
@@ -14,7 +14,7 @@ Tabelas:
 historico_pontuacoes
 - id
 - usuario_id
-- jogo_id ENUM
+- jogo ENUM
 - score
 - data_hora
 
