@@ -1,4 +1,4 @@
-# 🏆 Real-Time Leaderboard API
+# Real-Time Leaderboard API
 
 Uma API REST de alta performance desenvolvida em **Java** com **Spring Boot**, **Redis** e **MongoDB**, projetada para gerenciar placares e rankings em tempo real de múltiplos jogos simultâneos.
 
@@ -6,7 +6,7 @@ O sistema utiliza uma **arquitetura híbrida**: aproveita a velocidade na memór
 
 ---
 
-## ⚡ Principais Funcionalidades
+## Principais Funcionalidades
 
 - **Autenticação & Segurança:** Cadastro e login de usuários com senhas criptografadas via Spring Security.
 - **Registro de Pontuações:** Processamento de eventos de pontuação salvando o histórico no MongoDB e atualizando a posição no Redis em tempo real.
@@ -15,7 +15,7 @@ O sistema utiliza uma **arquitetura híbrida**: aproveita a velocidade na memór
 
 ---
 
-## 🛠️ Tecnologias Utilizadas
+## Tecnologias Utilizadas
 
 - **Linguagem:** Java 21+
 - **Framework:** Spring Boot 4
@@ -26,7 +26,7 @@ O sistema utiliza uma **arquitetura híbrida**: aproveita a velocidade na memór
 
 ---
 
-## 🏗️ Arquitetura e Decisões de Design
+## Arquitetura e Decisões de Design
 
 | Componente | Função no Sistema | Por que essa escolha? |
 | :--- | :--- | :--- |
@@ -35,13 +35,13 @@ O sistema utiliza uma **arquitetura híbrida**: aproveita a velocidade na memór
 
 ---
 
-## 🚀 Endpoints Principais
+## Endpoints Principais
 
-### 🔒 Autenticação
+### Autenticação
 - `POST /auth/register` — Cadastro de novos jogadores
 - `POST /auth/login` — Autenticação e geração de credenciais
 
-### 🎮 Leaderboard
+### Leaderboard
 - `POST /pontuacoes` — Registra uma nova pontuação para um jogador em um jogo específico.
 - `GET /leaderboard/{jogo}` — Retorna o ranking global ordenado de um determinado jogo.
 - `GET /leaderboard/{jogo}/me` — Retorna a posição, pontuação e dados do jogador autenticado naquele jogo.
