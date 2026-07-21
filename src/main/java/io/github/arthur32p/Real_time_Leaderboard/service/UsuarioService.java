@@ -1,6 +1,7 @@
 package io.github.arthur32p.Real_time_Leaderboard.service;
 
 import io.github.arthur32p.Real_time_Leaderboard.dto.UsuarioRequestDto;
+import io.github.arthur32p.Real_time_Leaderboard.exception.UsuarioJaCadastradoException;
 import io.github.arthur32p.Real_time_Leaderboard.models.Usuario;
 import io.github.arthur32p.Real_time_Leaderboard.repository.UsuarioRepository;
 import lombok.RequiredArgsConstructor;
@@ -23,7 +24,7 @@ public class UsuarioService implements UserDetailsService {
 
     public Usuario register(UsuarioRequestDto dto){
         if (repository.findByUsername(dto.username()) != null) {
-            throw new RuntimeException("Este username já está em uso!");
+            throw new UsuarioJaCadastradoException("Este username já está em uso!");
         }
 
         Usuario salvo = new Usuario();
