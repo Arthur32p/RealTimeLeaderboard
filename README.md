@@ -11,6 +11,7 @@ O sistema utiliza uma **arquitetura híbrida**: aproveita a velocidade na memór
 - **Autenticação & Segurança:** Cadastro e login de usuários com senhas criptografadas via Spring Security.
 - **Registro de Pontuações:** Processamento de eventos de pontuação salvando o histórico no MongoDB e atualizando a posição no Redis em tempo real.
 - **Posição Individual (`/me`):** Consulta individual onde o jogador descobre sua colocação exata e pontuação acumulada instantaneamente através do comando `ZREVRANK` do Redis.
+- **Validação & Tratamento de Erros:** Respostas HTTP padronizadas via `@RestControllerAdvice` com validação de payload em tempo de requisição, evitando erros não tratados.
 - **Carga de Dados Idempotente:** Script de inicialização (`CommandLineRunner`) que popula dados de teste de forma inteligente sem duplicar registros no *restart* do servidor.
 
 ---
