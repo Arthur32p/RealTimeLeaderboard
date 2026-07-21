@@ -1,6 +1,7 @@
 package io.github.arthur32p.Real_time_Leaderboard.service;
 
 import io.github.arthur32p.Real_time_Leaderboard.dto.LeaderboardGeralDto;
+import io.github.arthur32p.Real_time_Leaderboard.dto.UsuarioLeaderboardPosicaoDto;
 import io.github.arthur32p.Real_time_Leaderboard.models.Usuario;
 import io.github.arthur32p.Real_time_Leaderboard.repository.UsuarioRepository;
 import lombok.RequiredArgsConstructor;
@@ -47,6 +48,23 @@ public class LeaderboardService {
         }
 
         return resultado;
+    }
+
+    public UsuarioLeaderboardPosicaoDto getPositionLeaderboard(String usuarioId, String jogo){
+        Long rank = redisTemplate.opsForZSet().reverseRank(jogo, usuarioId);
+
+        if(rank == null){
+            return new UsuarioLeaderboardPosicaoDto(null, 0, 0.0, jogo);
+        }
+
+        Double score = redisTemplate.opsForZSet().score(jogo, usuarioId);
+
+        String nickname = usuarioRepository.findById(usuarioId)
+                .map(Usuario::getNickname)
+                .orElse("Desconhecido");
+
+        return new UsuarioLeaderboardPosicaoDto(nickname, (int) (rank+1), score != null ? score : 0.0, jogo);
+
     }
 
 }
